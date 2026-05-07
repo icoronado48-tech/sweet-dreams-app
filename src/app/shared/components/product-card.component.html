@@ -1,0 +1,22 @@
+<div class="sweet-card" [routerLink]="['/product-detail', product.id]">
+  <!-- Imagen circular superior -->
+  <div class="product-avatar">
+    <img [src]="product.image" [alt]="product.name" />
+    <div class="heart-badge">
+      <ion-icon name="heart"></ion-icon>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <span class="category">{{ product.category }}</span>
+    <h3 class="name">{{ product.name }}</h3>
+    <p class="desc">{{ product.description | slice: 0 : 45 }}...</p>
+
+    <div class="footer">
+      <span class="price">Bs{{ product.price }}</span>
+      <ion-button (click)="onAddToCart($event)" fill="clear">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</div>

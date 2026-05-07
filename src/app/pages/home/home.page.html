@@ -1,0 +1,54 @@
+<!-- PAGINA DE INICIO(HOME) -->
+
+<!-- Header con diseño minimalista y logo dulce -->
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!-- Botón para abrir el menú lateral (colocado a la izquierda) -->
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary"></ion-menu-button>
+    </ion-buttons>
+    <!-- Título / Logo de la marca -->
+    <ion-title>
+      <div class="brand-logo">
+        <span class="light">SWEET</span><span class="bold">DREAMS</span>
+      </div>
+    </ion-title>
+    <!-- Botón de carrito a la derecha -->
+    <ion-buttons slot="end">
+      <ion-button class="cart-btn" routerLink="/cart">
+        <ion-icon name="bag-handle-outline"></ion-icon>
+        <div class="dot"></div>
+        <!-- Punto notificador (simula productos en carrito) -->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!-- Contenido principal (Cuerpo de la pagina) con scroll habilitado, [fullscreen]="true" para que ocupe toda la pantalla -->
+<ion-content [fullscreen]="true">
+  <!-- Sección de Hero / Bienvenida (Imagen de Fondo con texto)-->
+  <div class="hero-section">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <span class="subtitle">HECHO CON AMOR 🍰</span>
+      <h1>Postres <span>Artesanales</span></h1>
+      <p>Endulzamos tus momentos más especiales con recetas únicas.</p>
+    </div>
+  </div>
+
+  <!-- Contenedor principal del listado de productos -->
+  <div class="main-container">
+    <div class="section-header">
+      <h2>Nuestras <span>Delicias</span></h2>
+      <ion-button fill="clear" color="primary">Ver todo</ion-button>
+    </div>
+    <!-- Grid de productos: usa un componente hijo 'app-product-card' -->
+    <div class="products-grid">
+      <app-product-card
+        *ngFor="let product of products$ | async"
+        [product]="product"
+        (addToCart)="addToCart($event)"
+      >
+      </app-product-card>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,63 @@
+<!-- INFORMACION PERSONAL: PERFIL DEL CHEF PASTELERO -->
+
+<!-- Encabezado de la pagina sin borde, color primario, con botón de menú -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <!-- Botón para volver atrás -->
+      <ion-back-button defaultHref="/home"></ion-back-button>
+      <!-- Botón para abrir menú lateral -->
+      <ion-menu-button></ion-menu-button>
+      <!-- Abre el menu lateral -->
+    </ion-buttons>
+
+    <!-- Titulo de la pagina -->
+    <ion-title
+      style="
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+      "
+      >Sobre la Chef</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+<!-- Contenido principal con scroll completo -->
+<ion-content [fullscreen]="true">
+  <div class="chef-profile">
+    <!-- Bloque superior con fondo degradado y el avatar -->
+    <div class="profile-header">
+      <div class="header-overlay"></div>
+      <!-- Avatar circular con foto de la chef (la misma del menú) -->
+      <ion-avatar class="chef-avatar">
+        <!-- Foto de Perfil -->
+        <img src="assets/images/Avatar.png" />
+      </ion-avatar>
+    </div>
+
+    <div class="profile-body">
+      <!-- Nombre y carrera, datos enlazados desde el TypeScript -->
+      <h2 class="chef-name">{{ nombre }}</h2>
+      <p class="chef-tagline">{{ carrera }}</p>
+      <!-- Biografía -->
+      <div class="bio-container">
+        <p>{{ descripcion }}</p>
+      </div>
+
+      <!-- Conocimientos y Especialidades -->
+      <div class="skills-section">
+        <h3>Especialidades 🍰</h3>
+        <div class="skills-grid">
+          <div class="skill-pill" *ngFor="let habilidad of habilidades">
+            {{ habilidad }}
+          </div>
+        </div>
+      </div>
+
+      <div class="quotes-container">
+        <ion-icon name="quote" color="primary"></ion-icon>
+        <p>"La pastelería es química, pero se hace desde con el corazón."</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

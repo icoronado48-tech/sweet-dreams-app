@@ -1,0 +1,112 @@
+// ESTILOS DE LA PAGINA DE DETALLE DEL PRODUCTO
+.detail-container {
+  display: flex;
+  flex-direction: column; // Apila imagen arriba y la info abajo
+  height: 100%; // Ocupa todo el alto disponible
+  background: white;
+}
+
+// Caja de la imagen del producto
+.product-image-box {
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: radial-gradient(circle, var(--ion-color-secondary) 0%, transparent 70%);
+// Fondo con degradado radial suave
+  img {
+    max-height: 100%;
+    object-fit: contain; // La imagen se ajusta sin deformarse
+    filter: drop-shadow(0 15px 30px rgba(255, 133, 161, 0.2)); // Sombra tipo "flotante"
+  }
+}
+
+// Hoja inferior con la información
+.info-sheet {
+  flex: 1; // Ocupa el resto del espacio (60%)
+  background: white;
+  border-radius: 40px 40px 0 0;
+  padding: 32px 24px;
+  position: relative;
+  box-shadow: 0 -15px 40px rgba(255, 133, 161, 0.1);
+
+  // Pequeña barra de "arrastre" (estético)
+  .drag-handle {
+    width: 40px;
+    height: 4px;
+    background: var(--ion-color-secondary);
+    border-radius: 2px;
+    margin: -16px auto 24px; // Negativo para que sobresalga un poco
+  }
+
+  .header-info {
+    margin-bottom: 24px;
+
+    .category {
+      color: var(--text-light);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      margin: 8px 0;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--ion-text-color);
+    }
+
+    .rating-box {
+      display: flex;
+      align-items: center;
+      ion-icon { color: var(--accent-gold); margin-right: 4px; }
+      span { font-weight: 600; font-size: 14px; color: var(--ion-text-color); }
+    }
+  }
+
+  .description {
+    color: var(--ion-text-color);
+    line-height: 1.6;
+    font-size: 15px;
+    margin-bottom: 24px;
+    opacity: 0.8;
+  }
+
+  .stock-info {
+    display: flex;
+    align-items: center;
+    color: var(--text-light);
+    font-size: 14px;
+    margin-bottom: 40px;
+    font-weight: 600;
+    
+    ion-icon { 
+      margin-right: 8px; 
+      color: var(--ion-color-primary);
+      font-size: 20px;
+    }
+  }
+
+  .footer-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .price {
+      .symbol { color: var(--ion-color-primary); font-weight: 700; font-size: 16px; }
+      .amount { font-size: 32px; font-weight: 900; color: var(--ion-text-color); }
+    }
+
+    ion-button {
+      --background: var(--ion-color-primary);
+      --color: white;
+      --border-radius: 16px;
+      height: 56px;
+      flex: 0.8;
+      font-weight: 700;
+      --box-shadow: 0 10px 20px rgba(255, 133, 161, 0.2);
+    }
+  }
+}

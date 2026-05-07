@@ -1,0 +1,63 @@
+<!-- PAGINA MUESTRA LA INFORMACION DETALLADA DE UN PRODUCTO ESPECIFICO -->
+<!-- header sin borde, con botón de volver atrás -->
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!-- Botón para regresar a la página anterior (home) -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- solo muestra el detalle si ya tenemos el producto cargado (evita errores) -->
+  <div *ngIf="product" class="detail-container">
+    <!-- Contenedor de la imagen del producto -->
+    <div class="product-image-box">
+      <!-- Enlace dinámico a la imagen y texto alternativo -->
+      <img [src]="product.image" [alt]="product.name" />
+    </div>
+
+    <!-- Hoja inferior con la información (como una tarjeta deslizable) -->
+    <div class="info-sheet">
+      <div class="drag-handle"></div>
+
+      <div class="header-info">
+        <!-- Categoría del producto (ej: "Pastel", "Cupcake") -->
+        <span class="category">{{ product.category }}</span>
+        <!-- Nombre del producto -->
+        <h1>{{ product.name }}</h1>
+        <!-- Calificación con estrella -->
+        <div class="rating-box">
+          <ion-icon name="star"></ion-icon>
+          <span>{{ product.rating }}</span>
+        </div>
+      </div>
+
+      <!-- Descripción larga -->
+      <p class="description">{{ product.description }}</p>
+
+      <!-- Información de elaboración (stock o tiempo de preparación) -->
+      <div class="stock-info">
+        <ion-icon name="time-outline"></ion-icon>
+        <span>Elaboración artesanal: Bajo pedido (24-48h)</span>
+      </div>
+
+      <!-- Parte inferior: precio + botón de agregar al carrito -->
+      <div class="footer-action">
+        <div class="price">
+          <span class="symbol">Bs</span>
+
+          <span class="amount">{{ product.price }}</span>
+        </div>
+
+        <!-- Botón que al hacer clic ejecuta addToCart() -->
+        <ion-button expand="block" shape="round" (click)="addToCart()">
+          <ion-icon name="cart" slot="start"></ion-icon>
+          Agregar al Carrito
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

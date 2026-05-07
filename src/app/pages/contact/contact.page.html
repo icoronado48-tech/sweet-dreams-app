@@ -1,0 +1,108 @@
+<!-- PAGINA DE CONTACTOS Y PEDIDOS ESPECIALES -->
+<!-- header sin borde, con toolbar color primario -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <!-- Botón para abrir el menú lateral -->
+    <ion-buttons slot="start">
+      <!-- Botón para volver atrás -->
+      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title
+      style="
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+      "
+      >Pedidos Especiales</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+<!-- Contenido principal con padding general -->
+<ion-content class="ion-padding">
+  <!-- Bloque de bienvenida / hero -->
+  <div class="contact-hero">
+    <h1>Haz tu evento inolvidable ✨</h1>
+    <p>Diseñamos postres personalizados para tus fechas más importantes.</p>
+  </div>
+  <!-- Grid responsivo: en móvil 1 columna, en tablet/desktop 2 columnas -->
+  <ion-grid>
+    <ion-row>
+      <!-- Redes Sociales (Izquierda) -->
+      <ion-col size="12" size-md="5" class="social-column">
+        <div class="info-card">
+          <h3>¡Contactanos!</h3>
+          <p>Síguenos en nuestras redes o escríbenos directamente.</p>
+          <!-- Instagram -->
+          <ion-item lines="none" class="social-item">
+            <ion-icon
+              name="logo-instagram"
+              slot="start"
+              color="primary"
+            ></ion-icon>
+            <ion-label>@SweetDreams</ion-label>
+          </ion-item>
+          <!-- WhatsApp -->
+          <ion-item lines="none" class="social-item">
+            <ion-icon
+              name="logo-whatsapp"
+              slot="start"
+              color="primary"
+            ></ion-icon>
+            <ion-label>+58 424 123 4567</ion-label>
+          </ion-item>
+          <!-- Correo -->
+          <ion-item lines="none" class="social-item">
+            <ion-icon
+              name="mail-outline"
+              slot="start"
+              color="primary"
+            ></ion-icon>
+            <ion-label>contacto@sweetdreams.com</ion-label>
+          </ion-item>
+          <!-- Decoración con emojis (semi transparente) -->
+          <div class="emoji-deco">🎨🧁🍭</div>
+        </div>
+      </ion-col>
+
+      <!-- Formulario de Cotizacion -->
+      <ion-col size="12" size-md="7">
+        <div class="form-container">
+          <ion-item lines="full" class="sweet-input">
+            <ion-label position="stacked">Tu Nombre</ion-label>
+            <ion-input type="text" placeholder="¿Cómo te llamas?"></ion-input>
+          </ion-item>
+          <!-- Campo: Tipo de evento (select) -->
+          <ion-item lines="full" class="sweet-input">
+            <ion-label position="stacked">Tipo de Evento</ion-label>
+            <ion-select placeholder="Selecciona uno">
+              <ion-select-option value="boda">Boda</ion-select-option>
+              <ion-select-option value="cumple">Cumpleaños</ion-select-option>
+              <ion-select-option value="bautizo">Bautizo</ion-select-option>
+              <ion-select-option value="otro">Otro</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <!-- Campo: Detalles (textarea) -->
+          <ion-item lines="full" class="sweet-input">
+            <ion-label position="stacked">Detalles del pedido</ion-label>
+            <ion-textarea
+              rows="4"
+              placeholder="Cuéntanos tu idea..."
+            ></ion-textarea>
+          </ion-item>
+          <!-- Botón enviar -->
+          <div class="ion-padding-top">
+            <ion-button
+              expand="block"
+              shape="round"
+              color="primary"
+              class="send-btn"
+            >
+              Solicitar Cotización
+            </ion-button>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

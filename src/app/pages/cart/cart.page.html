@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <!-- Botón para volver atrás (a la página anterior) -->
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title
+      style="
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+      "
+      >Mi Carrito</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Muestro los productos que el usuario agregó -->
+  <ion-list>
+    <!-- Recorro la lista de items usando el pipe async -->
+    <ion-item-sliding *ngFor="let item of cartItems$ | async">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="item.image" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ item.name }}</h2>
+          <p>Cantidad: {{ item.quantity }}</p>
+          <p><strong>{{ item.price * item.quantity | currency }}</strong></p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <!-- Opción para borrar un item deslizando hacia la izquierda -->
+        <ion-item-option color="danger" (click)="removeItem(item.id)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- Resumen de la compra con el precio total -->
+  <div class="summary-card" *ngIf="total > 0">
+    <ion-card>
+      <ion-card-content>
+        <div class="total-row">
+          <span>Total a pagar:</span>
+          <span class="price-text">{{ total | currency }}</span>
+        </div>
+        <!-- Botón para finalizar la compra -->
+        <ion-button expand="block" (click)="checkout()"
+          >Finalizar Compra</ion-button
+        >
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Si el carrito está vacío, muestro un mensaje amigable -->
+  <div class="empty-cart" *ngIf="total === 0">
+    <ion-icon name="cart-outline"></ion-icon>
+    <p>Tu carrito está vacío todavía.</p>
+    <ion-button fill="clear" routerLink="/home">Ir a comprar</ion-button>
+  </div>
+</ion-content>

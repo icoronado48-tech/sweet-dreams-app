@@ -1,5 +1,5 @@
 {
-  "name": "sweet-dreams-app",
+  "name": "ionic-app-base",
   "integrations": {},
-  "type": "angular-standalone"
+  "type": "angular"
 }

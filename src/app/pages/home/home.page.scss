@@ -1,0 +1,106 @@
+//ESTILOS ESPECIFICOS DE HOME
+// Logo de la marca en el toolbar
+.brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  letter-spacing: -1px;
+  
+  .light { font-weight: 300; color: var(--text-light); }  // Variable CSS para texto claro
+  .bold { font-weight: 900; color: var(--ion-color-primary); } // Color principal del tema (ej: rosa pastel)
+}
+// Botón del carrito (estilo y punto notificador)
+.cart-btn {
+  position: relative;
+  --color: var(--ion-color-primary);
+  font-size: 24px;
+
+  .dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background: var(--ion-color-primary);
+    border-radius: 50%;
+    border: 2px solid white; // Borde blanco para que se vea sobre el icono
+  }
+}
+// Sección hero con imagen de fondo y gradiente
+.hero-section {
+  height: 300px;
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1470&auto=format&fit=crop') center/cover;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  margin-bottom: -40px; // Para que se superponga un poco al contenedor blanco
+
+  .overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to right, rgba(255, 133, 161, 0.7) 0%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1; // Por encima del overlay
+    
+    .subtitle {
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 42px;
+      font-weight: 900;
+      margin: 8px 0;
+      line-height: 1;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      
+      span { color: #FFF; font-style: italic; }
+    }
+
+    p {
+      color: white;
+      font-size: 15px;
+      max-width: 250px;
+      font-weight: 500;
+    }
+  }
+}
+// Contenedor principal que da continuidad al fondo blanco
+.main-container {
+  position: relative;
+  z-index: 2;
+  background: var(--ion-background-color); // Fondo del tema
+  border-radius: 40px 40px 0 0;
+  padding: 32px 20px;
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--ion-text-color);
+      margin: 0;
+      
+      span { color: var(--ion-color-primary); }
+    }
+  }
+}
+// Grid de productos: por defecto 1 columna (para celulares)
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}

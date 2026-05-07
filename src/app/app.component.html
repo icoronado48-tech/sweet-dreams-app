@@ -1,3 +1,87 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <!-- COMPONENTE PRINCIPAL DE LA APP. -->
+
+  <!-- Menú Lateral: organiza las páginas de la aplicación -->
+  <!-- "contentId" se vincula con el router-outlet de abajo, así el menú sabe qué contenido debe desplazar -->
+  <ion-menu contentId="main-content" type="reveal">
+    <ion-header class="ion-no-border">
+      <ion-toolbar color="primary">
+        <ion-title
+          style="
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+          "
+          >🍰 Sweet Menu</ion-title
+        >
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <!-- 
+        Este Bloque muestra la foto, nombre y rol de la chef.-->
+
+      <div class="menu-header" style="text-align: center; padding: 20px 0">
+        <ion-avatar
+          style="
+            margin: 0 auto 10px;
+            width: 80px;
+            height: 80px;
+            border: 3px solid var(--ion-color-primary);
+          "
+        >
+          <img src="assets/images/Avatar.png" />
+        </ion-avatar>
+        <h3 style="margin: 0; color: var(--ion-text-color); font-weight: 700">
+          Iliana Coronado
+        </h3>
+        <p style="margin: 0; color: var(--text-light); font-size: 14px">
+          Chef Repostera
+        </p>
+      </div>
+      <!-- Lista de opciones del menú, sin líneas divisorias para que se vea más moderno -->
+      <ion-list lines="none">
+        <!-- ion-menu-toggle: Asegura el cierre automático del menú tras la selección -->
+        <ion-menu-toggle auto-hide="false">
+          <!-- routerLink="/home" lleva a la página principal, routerDirection="root" evita problemas de navegación -->
+          <ion-item button routerLink="/home" routerDirection="root">
+            <ion-icon
+              slot="start"
+              name="heart-outline"
+              color="primary"
+            ></ion-icon>
+            <ion-label>Mis Delicias</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item button routerLink="/personal-info" routerDirection="root">
+            <ion-icon
+              slot="start"
+              name="person-outline"
+              color="primary"
+            ></ion-icon>
+            <ion-label>Sobre la Chef</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item button routerLink="/contact" routerDirection="root">
+            <ion-icon
+              slot="start"
+              name="color-palette-outline"
+              color="primary"
+            ></ion-icon>
+            <ion-label>Pedidos Especiales</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- 
+    Contenedor principal donde Ionic carga las páginas (home, personal-info, contact).
+    El id "main-content" es el mismo que usamos en ion-menu, así el menú sabe qué debe desplazar.
+  -->
+  <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>

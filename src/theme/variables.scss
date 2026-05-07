@@ -1,2 +1,61 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+/* Configuración de colores Armoniosos "Sweet Dreams" */
+:root {
+  /** primario: Rosa Pastel Elegante **/
+  --ion-color-primary: #FF85A1;
+  --ion-color-primary-rgb: 255, 133, 161;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #e0758e;
+  --ion-color-primary-tint: #ff91aa;
+
+  /** secundario: Crema / Vainilla **/
+  --ion-color-secondary: #FCE4EC;
+  --ion-color-secondary-rgb: 252, 228, 236;
+  --ion-color-secondary-contrast: #3E2723;
+  --ion-color-secondary-contrast-rgb: 62, 39, 35;
+
+  /** Fondos y Textos **/
+  --ion-background-color: #FFF9FB;
+  --ion-background-color-rgb: 255, 249, 251;
+  
+  /* 
+     DISEÑO ATÓMICO: Paleta boutique Sweet Dreams.
+     Marrón Café para calidez y Rosa Pastel para dulzura.
+  */
+  --ion-text-color: #5D4037;
+  --ion-text-color-rgb: 93, 64, 55;
+
+  /* Sombras y Efectos */
+  --soft-shadow: 0 10px 30px rgba(255, 133, 161, 0.1);
+  --accent-gold: #FFB300;
+  --text-light: #8D6E63;
+}
+
+/* Forzamos que no haya modo oscuro que rompa la estética */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: #FFF9FB;
+    --ion-text-color: #5D4037;
+  }
+}
+
+* {
+  font-family: 'Quicksand', sans-serif !important; /* Fuente más dulce si estuviera disponible, sino Segoe UI */
+}
+
+ion-toolbar {
+  --background: #ffffff;
+  --color: var(--ion-color-primary);
+  border-bottom: 1px solid var(--ion-color-secondary);
+}
+
+ion-title {
+  font-weight: 700;
+  color: var(--ion-color-primary);
+}
+
+ion-card {
+  --background: #ffffff;
+  box-shadow: var(--soft-shadow);
+  border-radius: 25px !important;
+}

@@ -1,0 +1,109 @@
+// Estilos específicos de la página de perfil de la chef.
+.chef-profile {
+  background: var(--ion-background-color); // Fondo general
+ // Encabezado con degradado y avatar centrado
+  .profile-header {
+    height: 200px;
+    background: linear-gradient(135deg, var(--ion-color-secondary) 0%, var(--ion-color-primary) 100%);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; // Para que el avatar quede abajo del todo
+
+    .chef-avatar {
+      width: 130px;
+      height: 130px;
+      border: 6px solid white; // Borde blanco tipo marco
+      margin-bottom: -65px; // Mitad del avatar fuera del header
+      box-shadow: 0 10px 25px rgba(255, 133, 161, 0.2); 
+      z-index: 10;  // Por encima del degradado
+    }
+  }
+// Cuerpo del perfil (debajo del avatar)
+  .profile-body {
+    padding: 85px 24px 24px; // Padding superior grande porque el avatar invade
+    text-align: center;
+
+    .chef-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--ion-text-color);
+      margin: 0;
+    }
+
+    .chef-tagline {
+      font-size: 15px;
+      color: var(--ion-color-primary);
+      font-weight: 600;
+      margin: 6px 0 24px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+ // Tarjeta blanca con la biografía
+    .bio-container {
+      background: white;
+      padding: 24px;
+      border-radius: 25px;
+      box-shadow: var(--soft-shadow);
+      margin-bottom: 30px;
+      
+      p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--ion-text-color);
+        opacity: 0.9;
+      }
+    }
+  // Sección de habilidades/conocimientos
+    .skills-section {
+      text-align: left;
+      margin-bottom: 35px;
+
+      h3 {
+        font-size: 19px;
+        font-weight: 700;
+        margin-bottom: 18px;
+        color: var(--ion-text-color);
+        border-left: 4px solid var(--ion-color-primary); // Detalle decorativo
+        padding-left: 12px;
+      }
+
+      .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+
+        .skill-pill {
+          background: white;
+          color: var(--ion-color-primary);
+          padding: 10px 18px;
+          border-radius: 15px;
+          font-size: 14px;
+          font-weight: 600;
+          box-shadow: 0 4px 10px rgba(255, 133, 161, 0.05);
+          border: 1px solid var(--ion-color-secondary);
+        }
+      }
+    }
+ // Bloque de cita / frase
+    .quotes-container {
+      border-top: 1px dashed var(--ion-color-secondary);
+      padding-top: 25px;
+      
+      ion-icon {
+        font-size: 36px;
+        color: var(--ion-color-primary);
+        opacity: 0.3;
+        margin-bottom: 12px;
+      }
+
+      p {
+        font-style: italic;
+        color: var(--text-light);
+        font-size: 15px;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+    }
+  }
+}

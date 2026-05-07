@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Torta Tres Leches",
+    "description": "Nuestro pastel estrella: bizcocho húmedo empapado en leche entera, evaporada y condensada. Cubierto con crema chantilly y decorado con canela.",
+    "price": 12000,
+    "category": "Pasteles",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80",
+    "rating": 4.9,
+    "stock": 10,
+    "emoji": "🎂"
+  },
+  {
+    "id": 2,
+    "name": "Cupcakes Red Velvet",
+    "description": "Irresistibles cupcakes de terciopelo rojo con su característico color profundo. Acompañados de un generoso frosting de queso crema Philadelphia.",
+    "price": 4900,
+    "category": "Cupcakes",
+    "image": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=600&q=80",
+    "rating": 4.8,
+    "stock": 20,
+    "emoji": "🧁"
+  },
+  {
+    "id": 3,
+    "name": "Macarons Surtidos",
+    "description": "Macarons elaborados con técnica francesa tradicional. Caja surtida con sabores: frambuesa, pistacho, vainilla de Madagascar y chocolate belga.",
+    "price": 3200,
+    "category": "Macarons",
+    "image": "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=600&q=80",
+    "rating": 4.7,
+    "stock": 15,
+    "emoji": "🫐"
+  },
+  {
+    "id": 4,
+    "name": "Cheesecake de Frutos Rojos",
+    "description": "Cheesecake horneado al baño María para lograr una textura perfectamente sedosa. Base de galleta de mantequilla y coulis de frutos rojos frescos.",
+    "price": 21500,
+    "category": "Cheesecakes",
+    "image": "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?w=600&q=80",
+    "rating": 4.9,
+    "stock": 12,
+    "emoji": "🍓"
+  }
+]
