@@ -1,11 +1,15 @@
-<!-- PAGINA DE CONTACTOS Y PEDIDOS ESPECIALES -->
-<!-- header sin borde, con toolbar color primario -->
+<!-- ============================================================ -->
+<!-- VISTA DE LA PÁGINA PEDIDOS ESPECIALES — SWEET DREAMS       -->
+<!-- Formulario reactivo con Angular + Ionic Mejoras visibles                   -->
+<!-- ============================================================ -->
+
+<!-- ENCABEZADO: Sin borde inferior, toolbar en color primario -->
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-    <!-- Botón para abrir el menú lateral -->
     <ion-buttons slot="start">
-      <!-- Botón para volver atrás -->
+      <!-- Botón para regresar a la página anterior (/home) -->
       <ion-back-button defaultHref="/home"></ion-back-button>
+      <!-- Botón para abrir el menú lateral -->
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title
@@ -14,93 +18,463 @@
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         font-weight: bold;
       "
-      >Pedidos Especiales</ion-title
     >
+      Pedidos Especiales
+    </ion-title>
   </ion-toolbar>
 </ion-header>
-<!-- Contenido principal con padding general -->
+
+<!-- CONTENIDO PRINCIPAL -->
 <ion-content class="ion-padding">
-  <!-- Bloque de bienvenida / hero -->
+  <!-- HERO: bloque de presentación con gradiente -->
+  <!-- Mejora: Se reemplazó el emoji 🍰 solitario por un grupo de emojis  -->
+  <!-- que representan mejor la variedad de postres y la celebración   -->
   <div class="contact-hero">
-    <h1>Haz tu evento inolvidable ✨</h1>
-    <p>Diseñamos postres personalizados para tus fechas más importantes.</p>
+    <!-- Fila de emojis decorativos representativos de la tienda -->
+    <div class="hero-emojis">🎂 🍰 🧁 🎉</div>
+    <h1>Cotiza tu pedido especial</h1>
+    <p>Postres artesanales personalizados para cada celebración.</p>
   </div>
-  <!-- Grid responsivo: en móvil 1 columna, en tablet/desktop 2 columnas -->
+
+  <!-- CUADRÍCULA PRINCIPAL: 2 columnas en tablet/desktop -->
   <ion-grid>
     <ion-row>
-      <!-- Redes Sociales (Izquierda) -->
+      <!-- COLUMNA IZQUIERDA: Información de contacto directo -->
+      <!-- size="12": ocupa toda la fila en móvil                        -->
+      <!-- size-md="5": ocupa 5/12 del ancho en pantallas medianas       -->
       <ion-col size="12" size-md="5" class="social-column">
         <div class="info-card">
-          <h3>¡Contactanos!</h3>
-          <p>Síguenos en nuestras redes o escríbenos directamente.</p>
+          <h3>¡Contáctanos!</h3>
+          <p>
+            Haz clic en cualquiera de estas opciones para comunicarte con
+            nosotros de inmediato.
+          </p>
+
+          <!-- Cada ion-item tiene button="true" para mostrar efecto de click -->
+          <!-- detail="true" agrega el chevron (>) a la derecha            -->
+          <!-- (click) llama al método correspondiente en el TypeScript     -->
+
           <!-- Instagram -->
-          <ion-item lines="none" class="social-item">
+          <ion-item
+            button="true"
+            detail="true"
+            lines="none"
+            class="social-item"
+            (click)="abrirInstagram()"
+          >
             <ion-icon
               name="logo-instagram"
               slot="start"
               color="primary"
             ></ion-icon>
-            <ion-label>@SweetDreams</ion-label>
+            <ion-label>
+              <h2>Instagram</h2>
+              <p>@SweetDreams</p>
+            </ion-label>
           </ion-item>
+
           <!-- WhatsApp -->
-          <ion-item lines="none" class="social-item">
+          <ion-item
+            button="true"
+            detail="true"
+            lines="none"
+            class="social-item"
+            (click)="abrirWhatsApp()"
+          >
             <ion-icon
               name="logo-whatsapp"
               slot="start"
-              color="primary"
+              color="success"
             ></ion-icon>
-            <ion-label>+58 424 123 4567</ion-label>
+            <ion-label>
+              <h2>WhatsApp Directo</h2>
+              <p>+58 424-1234567</p>
+            </ion-label>
           </ion-item>
-          <!-- Correo -->
-          <ion-item lines="none" class="social-item">
-            <ion-icon
-              name="mail-outline"
-              slot="start"
-              color="primary"
-            ></ion-icon>
-            <ion-label>contacto@sweetdreams.com</ion-label>
+
+          <!-- Correo: -->
+          <ion-item
+            button="true"
+            detail="true"
+            lines="none"
+            class="social-item"
+            (click)="abrirCorreo()"
+          >
+            <ion-icon name="mail" slot="start" color="primary"></ion-icon>
+            <ion-label>
+              <h2>Correo Electrónico</h2>
+              <p>contacto@sweetdreams.com</p>
+            </ion-label>
           </ion-item>
-          <!-- Decoración con emojis (semi transparente) -->
-          <div class="emoji-deco">🎨🧁🍭</div>
+
+          <!-- Mapa -->
+          <ion-item
+            button="true"
+            detail="true"
+            lines="none"
+            class="social-item"
+            (click)="abrirMapa()"
+          >
+            <ion-icon name="location" slot="start" color="danger"></ion-icon>
+            <ion-label>
+              <h2>Nuestra Tienda</h2>
+              <p>Caracas, Venezuela (Ver Mapa)</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Emoji decorativo de fondo (semitransparente) -->
+          <div class="emoji-deco">🎂</div>
         </div>
       </ion-col>
 
-      <!-- Formulario de Cotizacion -->
+      <!-- COLUMNA DERECHA: Formulario de cotización -->
       <ion-col size="12" size-md="7">
         <div class="form-container">
-          <ion-item lines="full" class="sweet-input">
-            <ion-label position="stacked">Tu Nombre</ion-label>
-            <ion-input type="text" placeholder="¿Cómo te llamas?"></ion-input>
-          </ion-item>
-          <!-- Campo: Tipo de evento (select) -->
-          <ion-item lines="full" class="sweet-input">
-            <ion-label position="stacked">Tipo de Evento</ion-label>
-            <ion-select placeholder="Selecciona uno">
-              <ion-select-option value="boda">Boda</ion-select-option>
-              <ion-select-option value="cumple">Cumpleaños</ion-select-option>
-              <ion-select-option value="bautizo">Bautizo</ion-select-option>
-              <ion-select-option value="otro">Otro</ion-select-option>
-            </ion-select>
-          </ion-item>
-          <!-- Campo: Detalles (textarea) -->
-          <ion-item lines="full" class="sweet-input">
-            <ion-label position="stacked">Detalles del pedido</ion-label>
-            <ion-textarea
-              rows="4"
-              placeholder="Cuéntanos tu idea..."
-            ></ion-textarea>
-          </ion-item>
-          <!-- Botón enviar -->
-          <div class="ion-padding-top">
-            <ion-button
-              expand="block"
-              shape="round"
-              color="primary"
-              class="send-btn"
-            >
-              Solicitar Cotización
-            </ion-button>
-          </div>
+          <!-- [formGroup]: enlaza este <form> con el FormGroup 'contactForm' del TS -->
+          <!-- (ngSubmit): llama a enviarFormulario() cuando se presiona type="submit" -->
+          <form [formGroup]="contactForm" (ngSubmit)="enviarFormulario()">
+            <ion-grid class="ion-no-padding">
+              <!-- FILA 1: Nombre + Tipo de Evento  -->
+              <ion-row>
+                <!-- CAMPO: TU NOMBRE -->
+                <ion-col size="12" size-md="6" class="ion-padding-end">
+                  <ion-item
+                    lines="none"
+                    class="sweet-input box-input"
+                    [class.input-error]="submitted && controles['nombre'].invalid"
+                    [class.input-valid]="controles['nombre'].valid"
+                  >
+                    <ion-label position="stacked">Tu Nombre completo</ion-label>
+                    <!-- formControlName enlaza este input con el control 'nombre' del FormGroup -->
+                    <ion-input
+                      type="text"
+                      formControlName="nombre"
+                      placeholder="¿Cómo te llamas?"
+                    >
+                    </ion-input>
+                  </ion-item>
+                  <!-- Mensajes de error: visibles si el campo fue tocado O se intentó enviar -->
+                  <div
+                    class="error-msg"
+                    *ngIf="(submitted || controles['nombre'].touched) && controles['nombre'].errors"
+                  >
+                    <span *ngIf="controles['nombre'].errors?.['required']"
+                      >Tu nombre es necesario.</span
+                    >
+                    <span *ngIf="controles['nombre'].errors?.['minlength']"
+                      >Mínimo 3 caracteres.</span
+                    >
+                  </div>
+                </ion-col>
+
+                <!-- CAMPO: TIPO DE CELEBRACIÓN (select) -->
+                <ion-col size="12" size-md="6">
+                  <ion-item
+                    lines="none"
+                    class="sweet-input box-input"
+                    [class.input-error]="submitted && controles['tipoEvento'].invalid"
+                    [class.input-valid]="controles['tipoEvento'].valid"
+                  >
+                    <ion-label position="stacked"
+                      >Tipo de Celebración</ion-label
+                    >
+                    <!-- formControlName sobre ion-select: Angular gestiona el valor seleccionado -->
+                    <ion-select
+                      placeholder="Selecciona un evento"
+                      formControlName="tipoEvento"
+                    >
+                      <ion-select-option value="boda"
+                        >Boda / Matrimonio</ion-select-option
+                      >
+                      <ion-select-option value="cumple"
+                        >Cumpleaños</ion-select-option
+                      >
+                      <ion-select-option value="bautizo"
+                        >Bautizo / Primera Comunión</ion-select-option
+                      >
+                      <ion-select-option value="corporativo"
+                        >Evento Corporativo</ion-select-option
+                      >
+                      <ion-select-option value="otro"
+                        >Otro Momento Especial</ion-select-option
+                      >
+                    </ion-select>
+                  </ion-item>
+                  <div
+                    class="error-msg"
+                    *ngIf="(submitted || controles['tipoEvento'].touched) && controles['tipoEvento'].errors"
+                  >
+                    <span *ngIf="controles['tipoEvento'].errors?.['required']"
+                      >Elige el tipo de evento.</span
+                    >
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <!-- FILA 2: Fecha + Cantidad de personas -->
+              <ion-row class="ion-margin-top">
+                <!-- CAMPO: FECHA DEL EVENTO con ion-datetime en popover -->
+                <ion-col size="12" size-md="6" class="ion-padding-end">
+                  <ion-item
+                    lines="none"
+                    class="sweet-input box-input"
+                    id="open-date-popover"
+                    [class.input-error]="submitted && controles['fechaEvento'].invalid"
+                    [class.input-valid]="controles['fechaEvento'].valid"
+                  >
+                    <ion-label position="stacked">Fecha del Evento</ion-label>
+                    <!-- Campo de solo lectura: muestra la fecha formateada -->
+                    <!-- el valor real se guarda en el FormControl 'fechaEvento' -->
+                    <ion-input
+                      [value]="formatearFecha(controles['fechaEvento'].value)"
+                      readonly
+                      placeholder="Toca para elegir la fecha"
+                    >
+                    </ion-input>
+                    <ion-icon
+                      name="calendar-outline"
+                      slot="end"
+                      style="margin-top: 15px; color: var(--ion-color-primary)"
+                    >
+                    </ion-icon>
+                  </ion-item>
+
+                  <!-- ion-popover: contenedor flotante que aparece al tocar el campo -->
+                  <!-- trigger: ID del elemento que lo activa -->
+                  <ion-popover
+                    trigger="open-date-popover"
+                    #datePopover
+                    class="date-popover"
+                  >
+                    <ng-template>
+                      <!-- Mejora: locale="es-ES" corrige los nombres de días y meses -->
+                      <!-- Mejora: firstDayOfWeek="1" hace que la semana empiece en lunes -->
+                      <!-- [min]="today" deshabilita fechas anteriores a hoy -->
+                      <ion-datetime
+                        presentation="date"
+                        locale="es-ES"
+                        firstDayOfWeek="1"
+                        [min]="today"
+                        (ionChange)="onDateChange($event, datePopover)"
+                      >
+                      </ion-datetime>
+                    </ng-template>
+                  </ion-popover>
+
+                  <div
+                    class="error-msg"
+                    *ngIf="(submitted || controles['fechaEvento'].touched) && controles['fechaEvento'].errors"
+                  >
+                    <span *ngIf="controles['fechaEvento'].errors?.['required']">
+                      Debes indicar la fecha del evento.
+                    </span>
+                  </div>
+                </ion-col>
+
+                <!-- CAMPO: CANTIDAD DE PERSONAS (contador manual) -->
+                <ion-col size="12" size-md="6">
+                  <ion-item lines="none" class="sweet-input box-input">
+                    <ion-label position="stacked"
+                      >Cantidad de Invitados</ion-label
+                    >
+                    <!-- El contador no usa input de texto sino botones + / - -->
+                    <!-- El valor se gestiona mediante patchValue en el TypeScript -->
+                    <div class="counter-container">
+                      <ion-button
+                        fill="outline"
+                        color="primary"
+                        size="small"
+                        class="counter-btn"
+                        (click)="decrementarPersonas()"
+                      >
+                        <ion-icon
+                          name="remove-outline"
+                          slot="icon-only"
+                        ></ion-icon>
+                      </ion-button>
+                      <span class="counter-value">
+                        {{ controles['numeroPersonas'].value }}
+                      </span>
+                      <ion-button
+                        fill="outline"
+                        color="primary"
+                        size="small"
+                        class="counter-btn"
+                        (click)="incrementarPersonas()"
+                      >
+                        <ion-icon
+                          name="add-outline"
+                          slot="icon-only"
+                        ></ion-icon>
+                      </ion-button>
+                    </div>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+
+              <!-- FILA 3: Menú de postres -->
+              <!-- Mejora: Rediseñado con tarjetas visuales en lugar de chips simples -->
+              <ion-row class="ion-margin-top">
+                <ion-col size="12">
+                  <div class="seccion-postres">
+                    <!-- Encabezado de la sección con instrucción clara -->
+                    <div class="postres-header">
+                      <span class="postres-titulo"
+                        >Menú de Postres de Interés</span
+                      >
+                      <span class="postres-subtitulo">
+                        Selecciona las variedades para tu cotización ({{
+                        postresSeleccionados.length }} elegidos)
+                      </span>
+                    </div>
+
+                    <!-- Cuadrícula de tarjetas de postres -->
+                    <!-- Cada tarjeta alterna color según si está seleccionada -->
+                    <div class="postres-grid">
+                      <div
+                        *ngFor="let postre of menuPostres"
+                        class="postre-card"
+                        [class.postre-card--selected]="isPostreSelected(postre)"
+                        (click)="togglePostre(postre)"
+                      >
+                        <!-- Emoji representativo del tipo de postre -->
+                        <span class="postre-emoji"
+                          >{{ getPostreIcono(postre) }}</span
+                        >
+                        <!-- Nombre del postre -->
+                        <span class="postre-nombre">{{ postre }}</span>
+                        <!-- Indicador de selección: checkmark o círculo vacío -->
+                        <ion-icon
+                          class="postre-check"
+                          [name]="isPostreSelected(postre) ? 'checkmark-circle' : 'ellipse-outline'"
+                        >
+                        </ion-icon>
+                      </div>
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <!-- FILA 4: Imagen de referencia -->
+              <ion-row class="ion-margin-top">
+                <ion-col size="12">
+                  <div class="seccion-imagen">
+                    <span class="imagen-titulo"
+                      >Imagen de Referencia
+                      <span class="imagen-opcional">(Opcional)</span>
+                    </span>
+
+                    <!-- Zona de subida: Mejora: cursor pointer en SCSS -->
+                    <!-- fileInput.click() abre el selector de archivos al tocar la zona -->
+                    <div class="upload-zone" (click)="fileInput.click()">
+                      <!-- Estado vacío: no hay imagen seleccionada todavía -->
+                      <ng-container *ngIf="!filePreview">
+                        <ion-icon
+                          name="cloud-upload-outline"
+                          class="upload-icon"
+                          color="primary"
+                        >
+                        </ion-icon>
+                        <p class="upload-instruccion">
+                          Toca aquí para subir tu imagen de referencia
+                        </p>
+                        <p class="upload-specs">JPG o PNG · Máximo 5 MB</p>
+                      </ng-container>
+
+                      <!-- Estado con imagen: muestra la vista previa -->
+                      <div class="preview-container" *ngIf="filePreview">
+                        <img
+                          [src]="filePreview"
+                          alt="Vista previa"
+                          class="img-preview"
+                        />
+                        <!-- stopPropagation en el botón evita que se abra el selector al quitar -->
+                        <ion-button
+                          fill="solid"
+                          color="danger"
+                          size="small"
+                          class="btn-quitar"
+                          (click)="removerImagen($event)"
+                        >
+                          <ion-icon
+                            name="trash-outline"
+                            slot="start"
+                          ></ion-icon>
+                          Quitar imagen
+                        </ion-button>
+                      </div>
+                    </div>
+
+                    <!-- Input file oculto: se activa programáticamente desde el click de .upload-zone -->
+                    <input
+                      type="file"
+                      #fileInput
+                      accept="image/png, image/jpeg"
+                      style="display: none"
+                      (change)="onFileSelected($event)"
+                    />
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <!-- FILA 5: Detalles adicionales -->
+              <ion-row class="ion-margin-top">
+                <ion-col size="12">
+                  <ion-item
+                    lines="none"
+                    class="sweet-input box-input"
+                    [class.input-error]="submitted && controles['detalles'].invalid"
+                    [class.input-valid]="controles['detalles'].valid"
+                  >
+                    <ion-label position="stacked"
+                      >Detalles adicionales o Temática</ion-label
+                    >
+                    <!-- formControlName: enlaza con el control 'detalles' del FormGroup -->
+                    <ion-textarea
+                      rows="4"
+                      placeholder="Especifica sabores, alergias, colores o temática de la decoración..."
+                      formControlName="detalles"
+                    >
+                    </ion-textarea>
+                  </ion-item>
+
+                  <!-- Fila inferior del campo: error + contador de caracteres -->
+                  <div class="detalles-footer">
+                    <div
+                      class="error-msg"
+                      *ngIf="(submitted || controles['detalles'].touched) && controles['detalles'].errors"
+                    >
+                      <span *ngIf="controles['detalles'].errors?.['required']">
+                        Los detalles ayudan a una mejor cotización.
+                      </span>
+                      <span *ngIf="controles['detalles'].errors?.['minlength']">
+                        Ingresa al menos 10 caracteres.
+                      </span>
+                    </div>
+                    <!-- Contador de caracteres: muestra progreso hacia el límite de 500 -->
+                    <span class="char-counter">
+                      {{ controles['detalles'].value?.length || 0 }}/500
+                    </span>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+            <!-- BOTÓN PRINCIPAL DE ENVÍO -->
+            <!-- type="submit" es obligatorio para que (ngSubmit) se dispare  -->
+            <!-- expand="block" lo hace ancho completo                         -->
+            <div class="ion-padding-top ion-margin-top">
+              <ion-button
+                expand="block"
+                shape="round"
+                color="primary"
+                class="send-btn"
+                type="submit"
+              >
+                SOLICITAR COTIZACIÓN
+              </ion-button>
+            </div>
+          </form>
         </div>
       </ion-col>
     </ion-row>
