@@ -1,108 +1,487 @@
-// ESTILOS DE LA PAGINA DE CONTACTO.
+// ============================================================
+// contact.page.scss
+// ESTILOS DE LA PÁGINA PEDIDOS ESPECIALES — SWEET DREAMS
+// Importante: Los cambios respecto a la versión anterior están se documentan
+// con el comentario: //Mejora:
+// ============================================================
 
-// Hero (encabezado con degradado)
+//HERO: bloque de presentación superior
 .contact-hero {
   text-align: center;
-  padding: 40px 20px;
+  padding: 32px 20px 28px;
   background: linear-gradient(to bottom, var(--ion-color-secondary), transparent);
   border-radius: 0 0 40px 40px;
   margin-bottom: 20px;
 
+  // Mejora: nueva fila de emojis decorativos representativos de la pastelería
+  .hero-emojis {
+    font-size: 32px;          // Tamaño uniforme para todos los emojis
+    letter-spacing: 6px;      // Separa los emojis para que no queden amontonados
+    margin-bottom: 12px;
+    display: block;
+  }
+
   h1 {
-    font-size: 26px;
+    font-size: 22px;           // Mejora:: Reducido de 26px para evitar texto que desborde
     font-weight: 800;
     color: var(--ion-text-color);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    line-height: 1.3;          // Mejora: Aumenta legibilidad en pantallas pequeñas
   }
+
   p {
-    color: var(--text-light);
-    font-size: 15px;
+    color: var(--text-light, #666);
+    font-size: 14px;
+    margin: 0;
   }
 }
-// Columna de redes sociales
+
+// COLUMNA SOCIAL: tarjeta de contacto directo
 .social-column {
   .info-card {
     background: white;
-    padding: 24px;
+    padding: 20px;             // Mejora: Reducido de 24px para menos espacio ocioso
     border-radius: 24px;
-    box-shadow: var(--soft-shadow); // Sombra suave definida en variables globales
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     height: 100%;
     position: relative;
-    overflow: hidden; // Para que los emojis decorativos no se salgan
+    overflow: hidden;
 
     h3 {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--ion-text-color);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
-    p {
-      font-size: 14px;
-      color: var(--text-light);
-      margin-bottom: 24px;
+    > p {
+      font-size: 13px;         // Mejora: Tamaño harmonizado con el resto de descripciones
+      color: var(--text-light, #666);
+      margin-bottom: 16px;     // Mejora: Reducido de 24px
+      line-height: 1.5;
     }
- // Cada ítem de red social
+
+    // Cada ítem de red social
     .social-item {
       --padding-start: 0;
-      margin-bottom: 10px;
+      --padding-end: 0;        // Mejora: Elimina el exceso de espacio ocioso a la derecha
+      --min-height: 52px;      // Mejora: Altura controlada para reducir el gap entre items
+      --inner-padding-end: 8px; // Mejora: Reduce el espacio entre el chevron y el borde
+      margin-bottom: 6px;      // Mejora: Reducido de 10px
       --background: transparent;
-      
-      ion-icon {
-        font-size: 24px;
-        color: var(--ion-color-primary);
+      border-radius: 12px;
+      transition: background 0.15s ease;
+
+      // Efecto hover (en dispositivos con ratón)
+      &:hover {
+        --background: var(--ion-color-light, #f9f9f9);
       }
+
+      ion-icon {
+        font-size: 22px;       // Mejora: Ligeramente reducido de 24px para más proporción
+        margin-right: 4px;
+      }
+
       ion-label {
-        font-size: 15px;
-        font-weight: 500;
-        color: var(--ion-text-color);
+        h2 {
+          font-size: 14px;     // Mejora: Tamaño harmonizado (antes heredaba 15px inconsistente)
+          font-weight: 600;
+          color: var(--ion-text-color);
+          margin-bottom: 2px;
+        }
+
+        p {
+          font-size: 12px;     // Mejora: Subtítulo más pequeño que el título del item
+          color: var(--text-light, #888);
+          margin: 0;
+        }
       }
     }
- // Decoración con emojis (semi transparente, abajo a la derecha)
+
+    // Emoji decorativo de fondo
     .emoji-deco {
       position: absolute;
       bottom: -10px;
       right: 10px;
-      font-size: 40px;
-      opacity: 0.1;
+      font-size: 50px;
+      opacity: 0.08;           // Mejora: Más suave para que no distraiga
+      pointer-events: none;    // No interfiere con los clicks del usuario
     }
   }
 }
-// Estilos del formulario
+
+// FORMULARIO: contenedor principal del form 
 .form-container {
   background: white;
   padding: 24px;
   border-radius: 24px;
-  box-shadow: var(--soft-shadow);
-// Personalización de inputs
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  // Estilos base para cada campo del formulario
   .sweet-input {
     --padding-start: 0;
-    margin-bottom: 15px;
-    --highlight-color-focused: var(--ion-color-primary); // Color del borde al enfocar
+    margin-bottom: 2px;
+    --highlight-color-focused: var(--ion-color-primary);
+    border-radius: 12px;
 
     ion-label {
+      font-size: 13px;         // Mejora: Tamaño uniforme para todas las etiquetas
       font-weight: 600;
       color: var(--ion-color-primary);
-      margin-bottom: 8px !important;
+      margin-bottom: 4px !important;
     }
-    
+
     ion-input, ion-textarea, ion-select {
+      font-size: 14px;         // Mejora: tamaño harmonizado para todos los inputs
       color: var(--ion-text-color);
+      --padding-top: 6px;
     }
   }
-// Botón enviar
-  .send-btn {
-    height: 54px;
-    font-weight: 700;
-    font-size: 16px;
-    margin-top: 10px;
-    --background: var(--ion-color-primary);
-    --box-shadow: 0 10px 20px rgba(255, 133, 161, 0.2); // Sombra rosa pastel
+
+  // Estilo visual de caja para los campos (reemplaza el subrayado simple)
+  .box-input {
+    background: #fafafa;
+    border: 1.5px solid #eeeeee;
+    border-radius: 12px;
+    margin-bottom: 0;
+    transition: border-color 0.2s ease;
+
+    &:focus-within {
+      border-color: var(--ion-color-primary);
+      background: #fff;
+    }
+  }
+
+  // Estado error: borde rojo
+  .input-error {
+    border-color: var(--ion-color-danger) !important;
+  }
+
+  // Estado válido: borde verde
+  .input-valid {
+    border-color: var(--ion-color-success) !important;
   }
 }
-// Responsive: en celular la columna social tiene margen inferior
+
+// MENSAJES DE ERROR
+// Mejora: se creó una clase unificada .error-msg que reemplaza a los ion-note
+// dispersos con distintos estilos
+.error-msg {
+  font-size: 12px;             // Mejora: tamaño pequeño y uniforme para todos los errores
+  color: var(--ion-color-danger);
+  padding: 4px 4px 8px;
+  min-height: 20px;            // Reserva espacio para evitar saltos de layout
+
+  span {
+    display: block;
+    line-height: 1.4;
+  }
+}
+
+// CONTADOR DE PERSONAS
+.counter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 0 6px;
+  width: 100%;
+
+  .counter-btn {
+    --padding-start: 4px;
+    --padding-end: 4px;
+    width: 36px;
+    height: 36px;
+    margin: 0;
+  }
+
+  .counter-value {
+    font-size: 22px;           // Número grande y legible
+    font-weight: 700;
+    color: var(--ion-color-primary);
+    min-width: 40px;
+    text-align: center;
+    font-variant-numeric: tabular-nums; // Evita que el número "salte" al cambiar de ancho
+  }
+}
+
+// SECCIÓN MENÚ DE POSTRES 
+// Mejora: Rediseñada completamente con tarjetas en lugar de chips simples
+.seccion-postres {
+  background: #fafafa;
+  border: 1.5px solid #eeeeee;
+  border-radius: 12px;
+  padding: 16px;
+
+  // Encabezado de la sección
+  .postres-header {
+    margin-bottom: 14px;
+
+    .postres-titulo {
+      display: block;
+      font-size: 13px;         // Mejora: Mismo tamaño que las etiquetas del formulario
+      font-weight: 600;
+      color: var(--ion-color-primary);
+      margin-bottom: 4px;
+    }
+
+    .postres-subtitulo {
+      display: block;
+      font-size: 12px;         // Mejora: más pequeño que el título para jerarquía visual
+      color: #888;
+    }
+  }
+
+  // Cuadrícula de tarjetas de postres: 2 columnas en móvil, 3 en tablet
+  .postres-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+
+    @media (min-width: 400px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  // Cada tarjeta de postre
+  .postre-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 8px;
+    background: white;
+    border: 2px solid #eeeeee;
+    border-radius: 14px;
+    cursor: pointer;              // Muestra la manito indicando que es clickeable
+    transition: all 0.18s ease;
+    user-select: none;            // Evita que el texto se seleccione al hacer doble click
+    text-align: center;
+    min-height: 80px;
+
+    // Efecto hover
+    &:hover {
+      border-color: var(--ion-color-primary);
+      background: #fff5f8;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 133, 161, 0.15);
+    }
+
+    // Estado seleccionado: fondo y borde en color primario
+    &--selected {
+      border-color: var(--ion-color-primary);
+      background: var(--ion-color-primary);
+
+      .postre-nombre {
+        color: white;
+      }
+
+      .postre-check {
+        color: white;
+      }
+
+      &:hover {
+        background: var(--ion-color-primary-shade);
+      }
+    }
+
+    // Emoji del tipo de postre
+    .postre-emoji {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    // Nombre del postre
+    .postre-nombre {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ion-text-color);
+      line-height: 1.3;
+    }
+
+    // Ícono de check o círculo vacío
+    .postre-check {
+      font-size: 16px;
+      color: #ccc;
+      transition: color 0.15s ease;
+    }
+  }
+}
+
+// SECCIÓN DE IMAGEN DE REFERENCIA 
+.seccion-imagen {
+  background: #fafafa;
+  border: 1.5px solid #eeeeee;
+  border-radius: 12px;
+  padding: 16px;
+
+  // Título de la sección
+  .imagen-titulo {
+    display: block;
+    font-size: 13px;           // Mejora: Mismo tamaño que el resto de etiquetas
+    font-weight: 600;
+    color: var(--ion-color-primary);
+    margin-bottom: 12px;
+
+    // Texto "(Opcional)" en tamaño y color secundario
+    .imagen-opcional {
+      font-weight: 400;
+      font-size: 11px;
+      color: #aaa;
+      margin-left: 4px;
+    }
+  }
+}
+
+// Zona de arrastre / click para subir imagen
+.upload-zone {
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+  cursor: pointer;             // Mejora: muestra la manito al posicionar el cursor
+  transition: border-color 0.2s ease, background 0.2s ease;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border-color: var(--ion-color-primary);
+    background: #fff5f8;
+  }
+
+  // Ícono de subida
+  .upload-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  // Mejora: Instrucción principal — texto harmonizado con el resto del formulario
+  .upload-instruccion {
+    font-size: 13px;           // Igual que las etiquetas del formulario
+    font-weight: 500;
+    color: var(--ion-text-color);
+    margin: 0 0 4px;
+    line-height: 1.4;
+  }
+
+  // Mejora: Especificaciones técnicas — más pequeñas que la instrucción
+  .upload-specs {
+    font-size: 11px;           // Claramente subordinado a la instrucción principal
+    color: #aaa;
+    margin: 0;
+  }
+
+  // Contenedor de la vista previa cuando ya hay una imagen
+  .preview-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    .img-preview {
+      width: 100%;
+      max-width: 200px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-quitar {
+      --border-radius: 8px;
+    }
+  }
+}
+
+// DETALLES ADICIONALES: footer del textarea 
+// Mejora: Reemplaza el div con estilos inline por clases controladas desde SCSS
+.detalles-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 4px 4px 0;
+  min-height: 22px;            // Reserva espacio para evitar saltos
+
+  // Contador de caracteres (esquina inferior derecha del textarea)
+  .char-counter {
+    font-size: 11px;           // Mejora: tamaño uniforme con las notas de error
+    color: #aaa;
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+}
+
+// POPOVER DEL SELECTOR DE FECHA 
+// Mejora: Controla las proporciones del ion-datetime dentro del popover
+.date-popover {
+  // Ancho fijo para que el calendario no se deforme en distintas pantallas
+  --width: 320px;
+
+  ion-datetime {
+    // Asegura que el calendario no desborde el popover
+    max-width: 100%;
+
+    // Mejora: asegura que las abreviaturas de los días de la semana 
+   // mantengan un tamaño legible y uniforme independientemente del idioma base.
+      &::part(calendar-day-names) {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    // Mejora: Encabezado con mes y año en tamaño proporcional al contenedor
+    &::part(month-year-button) {
+      font-size: 15px;
+      font-weight: 700;
+    }
+  }
+}
+
+// BOTÓN PRINCIPAL DE ENVÍO 
+.form-container .send-btn {
+  height: 54px;
+  font-weight: 700;
+  font-size: 15px;             // Mejora: Ligeramente reducido para mejor proporción
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  --background: var(--ion-color-primary);
+  --box-shadow: 0 10px 20px rgba(255, 133, 161, 0.25);
+  --border-radius: 27px;
+}
+
+// MENSAJES DE ERROR HEREDADOS (ion-note)
+// Mantiene compatibilidad si en algún lugar aún se usa ion-note
+.error-note {
+  display: block;
+  font-size: 12px;
+  color: var(--ion-color-danger);
+  padding: 4px 0 6px;
+
+  span {
+    display: block;
+  }
+}
+
+// RESPONSIVE: ajustes para móvil 
 @media (max-width: 768px) {
   .social-column {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+  }
+
+  .form-container {
+    padding: 16px;             // Menos padding en móvil para aprovechar el espacio
+  }
+
+  .contact-hero {
+    padding: 24px 16px 20px;
+
+    h1 {
+      font-size: 19px;         // Más compacto en pantallas pequeñas
+    }
   }
 }
